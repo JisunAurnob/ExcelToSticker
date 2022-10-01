@@ -41,17 +41,17 @@ class ExcelToPdfController extends Controller
         // $sorted = array();
 
 
-        for($j=1;$j<count($data)-1;$j++){
-            for($i=1;$i<count($data)-1;$i++){
+        for($j=1;$j<count($data);$j++){
+            for($i=$j+1;$i<count($data)-1;$i++){
                 //$data[$i][4] X
                 //$data[$i][5] Y
     
                 // dd((double)$data[$i][4]);
-                if( (double)$data[$i+1][4]>(double)$data[$i][4] && (double)$data[$i+1][5]>(double)$data[$i][5]){
+                if( (double)$data[$i][4]>(double)$data[$j][4] && (double)$data[$i][5]>(double)$data[$j][5]){
                 $small=$data[$i];
                 $large=$data[$i+1];
-                $data[$i]=$large;
-                $data[$i+1]=$small;
+                $data[$j]=$large;
+                $data[$i]=$small;
                 }
             }
         }
